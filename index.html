@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Passwortgeschützte Seite</title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .pre-page {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: black;
+            color: white;
+            height: 100%;
+            position: absolute;
+            width: 100%;
+            z-index: 10;
+        }
+
+        .password-input {
+            padding: 10px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+        }
+
+        .main-content {
+            display: none;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="pre-page" id="prePage">
+    <input type="password" id="password" class="password-input" placeholder="Passwort eingeben">
+    <button onclick="checkPassword()">Einloggen</button>
+</div>
+
+<div class="main-content" id="mainContent">
+    <h1>Willkommen auf der Hauptseite</h1>
+    <p>Dies ist die Hauptseite, die nach der Passworteingabe sichtbar wird.</p>
+</div>
+
+<script>
+    function checkPassword() {
+        const password = document.getElementById('password').value;
+        const correctPassword = 'deinPasswort'; // Hier das richtige Passwort festlegen
+
+        if (password === correctPassword) {
+            document.getElementById('prePage').style.display = 'none';
+            document.getElementById('mainContent').style.display = 'block';
+        } else {
+            alert('Falsches Passwort, bitte erneut versuchen.');
+        }
+    }
+</script>
+
+</body>
+</html>
